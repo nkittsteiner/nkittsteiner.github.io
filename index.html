@@ -11,11 +11,11 @@
 	  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 	  <!-- Bootstrap -->
-	  <link href="_includes/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+	  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 
 	  <!-- Bootstrap Material Design -->
-	  <link href="_includes/bower_components/bootstrap-material-design/dist/css/bootstrap-material-design.min.css" rel="stylesheet">
-	  <link href="_includes/bower_components/bootstrap-material-design/dist/css/ripples.min.css" rel="stylesheet">	
+	  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.7/css/bootstrap-material-design.min.css" rel="stylesheet">
+	  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.7/css/ripples.min.css" rel="stylesheet">	
 </head>
 
 <body role="document">
@@ -78,11 +78,11 @@
 
 
 
-	<script src="_includes/bower_components/jquery/dist/jquery.min.js"></script>
-	<script src="_includes/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-	<script src="_includes/bower_components/bootstrap-material-design/dist/js/material.min.js"></script>
-	<script src="_includes/bower_components/bootstrap-material-design/dist/js/ripples.min.js"></script>
-	<script src="_includes/bower_components/d3/d3.min.js" charset="utf-8"></script>
+	<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.7/js/material.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.7/js/ripples.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.13/d3.min.js" charset="utf-8"></script>
 	<script src="https://raw.githubusercontent.com/jasondavies/d3-cloud/master/build/d3.layout.cloud.js"></script>
 	<script type="text/javascript">
 
@@ -128,8 +128,6 @@
 	        .style("fill", function(d, i) { return fill(i); })
 	        .attr("text-anchor", "middle")
 	        .attr("transform", function(d) {
-				console.log(d.text);
-				console.log([d.x, d.y]);
 	          return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
 	        })
 	        .text(function(d) { return d.text; });
