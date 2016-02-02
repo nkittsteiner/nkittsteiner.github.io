@@ -3,7 +3,7 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>HN Code Trends</title>
+	<title>Top 20 Programming Languages in Hacker News</title>
 
 	  <!-- Material Design fonts -->
 
@@ -17,6 +17,8 @@
 	  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.7/css/bootstrap-material-design.min.css" rel="stylesheet">
 	  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.7/css/ripples.min.css" rel="stylesheet">	
 	  <link href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.min.css" rel="stylesheet">
+
+	  <link media="screen" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">	  
 	  <style type="text/css">
 	  body {
 	  	background-color: white;
@@ -26,16 +28,16 @@
 
 <body role="document">
 
-<a href="https://github.com/nkittsteiner/nkittsteiner.github.io"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+<a href="https://github.com/nkittsteiner/hacker-news-code-trends"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
 
 <div class="container">
 
   <div class="page-header" id="banner">
     <div class="row">
       <div class="col-sm-6">
-        <h1>HN Code Trends</h1>
+        <h1>Top 20 Programming Languages in Hacker News</h1>
 
-        <p class="lead">Based on HN data</p>
+        <p class="lead">Based on HN stories</p>
       </div>
 	</div>
    
@@ -63,12 +65,16 @@
           </p>
 
 
-		  <h2>Motivation</h2>          
-          <p>One of my interests was to know what programming languages are the more used, mainly by my background experience. I was a .NET developer for some years and I was completely abstracted from other languages and technologies (except Javascript of course). But I needed to get out of the bubble, so I jumped out and I made the decision to completely switch platforms. Now I work in an R + D in which I was able to learn many tools mainly free code which I'm very happy to be learning and using.</p>
+		  <h2>Motivation</h2>                   
 
-          <p>One of the questions that many niche developers have, is to know how relevant are the programming languages that they use in their developments. Everybody wants to be up to-date with latest trends. One of my favorite sources of information is without a doubt, Hacker News. I'm reading this site everyday for almost two years, and it's very cool the job that they do for keep a huge community of hackers and entrepreneurs updated.</p>
+          <p>HN for me is a very  good source of information. Not only for entrepreneurs but for many of hackers that are trying to do something interesting with code. I think that many of the stories of HN are relevant, not only to devs, but to a whole ecosystem that are trying to not drown in an ocean of irrelevant information.</p>
 
-          <p>Well this is a trend that I think it could be relevant to look in context to programming languages:</p>
+		  <h2>Getting the dataset</h2>
+
+          <p>For simplicity I use some Python scripts for connecting to the <a href="https://github.com/HackerNews/API">HN API</a> in Firebase. The process of getting all the stories was painfully slow. Next I tried to filter stories related to some programming language using Github's linguist <a href="https://github.com/github/linguist/blob/master/lib/linguist/languages.yml">languages.yml</a> file. For some cases (strings with no more than 3 characters), I had to filter with exact match for each word in the story title. So this is a very rough estimate like I said before, hope you could hack this scripts if you want to :)</p>
+
+
+          <p>Finally I do some processing using Pandas, and this is the result:</p>
         </div>
 
       </div>
@@ -90,7 +96,7 @@
       <div class="col-md-12">
         <div class="bs-component">
           
-          <p>Looking at this data many may be thinking that this could be like comparing apples with pears, but I created another view filtered by programming language and date. It's useful to compare basically how 'stable' or 'healthy' is a specific language. This could be relevant for identifying hypes and declines of each language:</p>
+          <p>Looking at this chart, it's important to know that for instance 'Go' have a lot of false positives, due the difficult to filter in context. Javascript in the other hand have many stories not counted because typos in the title of the story (ex: [Something]+JS and the relevant Node framework)</p>
    
         </div>
 
@@ -100,21 +106,31 @@
     <div class="row">
       <div class="col-md-12">
         <div class="bs-component">
-          <h2>Graph 2</h2>
-          <div id="chart3" class="c3" style="max-height: 280px; position: relative;"></div>
+          <h2>Top ten programming languages by year</h2>
+          <div id="line_chart" class="c3" style="max-height: 280px; position: relative;"></div>
         </div>
 
       </div>
     </div>            
 
+<br />
+
     <div class="row">
       <div class="col-md-12">
         <div class="bs-component">
           
-		  <p>Obviously this is only one source of thousands of other sources of information related to programming (Twitter, GitHub, groups, other ezines).</p>          
+          <p>It's interesting to see that 2015 was the year of Javascript without any doubt. In the year 2014 we could see a decline of Python and Java langs. Go-lang had gained a lot of popularity last year, maybe in the same level of Python (ignoring false positives).</p>
 
-		  <p>If your language doesn't show up here, that doesn't mean anything. Just pick the right tool for each problem. And if you want to contribute with more analytics, feel free to fork the dataset of HN. It could be nice to see some trends about Web Frameworks, or count votes of each story, or do some sentiment analysis of each article.
+		  <p>Besides the quantity of readers that HN have, this is only one source of thousands of other sources of information related to programming (Twitter, GitHub, groups, other ezines, etc). So this information can't be used to select one programming language in particular. Use the correct tool for the job.</p>          
+
+		  <p>If you want to contribute with more analytics, feel free to fork the dataset of HN. It could be nice to see some trends about Web Frameworks, or count votes of each story, or do some sentiment analysis of each article. Another interesting thing could be use the HN Jobs information grouping by technology.
 </p>          
+
+		  <p>
+		  	
+             <a class="btn btn-raised active" data-placement="top" data-toggle="tooltip" target="_blank" title="Share on Twitter" href="http://twitter.com/?status=Top 20 Code Langs in Hacker News http://nkittsteiner.github.io @nicokittsteiner"><i class="fa fa-twitter"></i> Twitter</a>		  	
+             <a class="btn btn-raised active" data-placement="top" data-toggle="tooltip" target="_blank" title="Fork it!" href="https://github.com/nkittsteiner/hacker-news-code-trends"><i class="fa fa-github"></i> Github</a>
+		  </p>
 
         </div>
 
@@ -138,12 +154,15 @@
 
 
 		function init_data(){
-		  	$.get("https://raw.githubusercontent.com/nkittsteiner/hacker-news-code-trends/master/json/count.json", data_callback);		
+		  	$.get("https://cdn.rawgit.com/nkittsteiner/hacker-news-code-trends/master/json/count.json", data_callback);		
 		}
 
-		function data_callback(data){
+		function line_graph_data(){
+			$.get("https://rawgit.com/nkittsteiner/hacker-news-code-trends/master/json/yearmonth.json", line_graph_data_callback);	
+		}		
+
+		function data_callback(json){
 	  		
-	  		var json = JSON.parse(data);
 			load_tag_cloud(json);
 
 			var top20 = [];
@@ -152,6 +171,10 @@
 			}			
 			load_bar_chart(top20);
 	  					
+		}
+
+		function line_graph_data_callback(json){
+			load_line_chart(json);			
 		}
 
 		function load_bar_chart(arr){		
@@ -176,6 +199,16 @@
 		            }
 		        }				
 			});			
+		}
+
+		function load_line_chart(obj){
+			var chart = c3.generate({
+			    bindto: '#line_chart',
+			    data: {
+			        xs: obj.xs,
+			        columns: obj.news
+			    }
+		    });
 		}
 
 		function load_tag_cloud(jsondata){
@@ -223,6 +256,7 @@
 
 		$(function () {
 			init_data();
+			line_graph_data();
 			$.material.init();	  
 		});
 </script>
