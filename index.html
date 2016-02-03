@@ -57,24 +57,24 @@
         <div class="bs-component">
           <h2>TL;DR</h2>
 
-          <p>Using mostly all the stories published in the site <a href="https://news.ycombinator.com/">news.ycombinator.com</a> I was grouping and filtering all stories related to programming languages. The core idea is to know which programming languages are the most discussed and have more relevance in the HN ecosystem.
+          <p>Using mostly all the stories published in the site <a href="https://news.ycombinator.com/">news.ycombinator.com</a> I grouped and filtered all stories related to programming languages. The core idea is to know which programming languages are the most discussed and have more relevance in the HN ecosystem.
           </p>
 
           <p>
-            <strong>Disclaimer: This is a very rough estimate. In special for 'Go', 'C' and 'R' that are difficult to separate from context. And also I'm mostly a backend developer so if you thing something is wrong with this web or can be changed, feel free to comment about it!</strong>
+            <strong>Disclaimer: This is a very rough estimate. In special for 'Go', 'C' and 'R' which are difficult to separate from context. Besides, I'm mostly a backend developer so if you think something is wrong with this web or can be modified, please feel free to comment about it!</strong>
           </p>
 
 
 		  <h2>Motivation</h2>                   
 
-          <p>HN for me is a very  good source of information. Not only for entrepreneurs but for many of hackers that are trying to do something interesting with code. I think that many of the stories of HN are relevant, not only to devs, but to a whole ecosystem that are trying to not drown in an ocean of irrelevant information.</p>
+          <p>In my opinion, HN is a fantastic information source. Not only for entrepreneurs but also for many hackers trying to do something interesting with code. I believe a great amount of HN stories are relevant, not only to devs, but to a whole ecosystem trying not to drown in an ocean of irrelevant information.</p>
 
-		  <h2>Getting the dataset</h2>
+		  <h2>Gathering the dataset</h2>
 
-          <p>For simplicity I use some Python scripts for connecting to the <a href="https://github.com/HackerNews/API">HN API</a> in Firebase. The process of getting all the stories was painfully slow. Next I tried to filter stories related to some programming language using Github's linguist <a href="https://github.com/github/linguist/blob/master/lib/linguist/languages.yml">languages.yml</a> file. For some cases (strings with no more than 3 characters), I had to filter with exact match for each word in the story title. So this is a very rough estimate like I said before, hope you could hack this scripts if you want to :)</p>
+          <p>For simplicity I use some Python scripts for connect to the <a href="https://github.com/HackerNews/API">HN API</a> in Firebase. The process of gathering all the stories was painfully slow. Then I tried to filter stories related to some programming language using Github's linguist <a href="https://github.com/github/linguist/blob/master/lib/linguist/languages.yml">languages.yml</a> file. For some cases (strings with no more than 3 characters), I had to filter with exact match for each word in the story title. Therefore, this is a very rough estimate; as I said before, hope you could hack this scripts if you want to :)</p>
 
 
-          <p>Finally I do some processing using Pandas, and this is the result:</p>
+          <p>Finally I did some processing using Pandas, and this is the result:</p>
         </div>
 
       </div>
@@ -83,7 +83,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="bs-component">
-          <h2>Count of stories by programming languages (Top 20)</h2>
+          <h2>Counting stories by programming languages (Top 20)</h2>
           <div id="chart2" class="c3" style="max-height: 280px; position: relative;"></div>
         </div>
 
@@ -96,7 +96,7 @@
       <div class="col-md-12">
         <div class="bs-component">
           
-          <p>Looking at this chart, it's important to know that for instance 'Go' have a lot of false positives, due the difficult to filter in context. Javascript in the other hand have many stories not counted because typos in the title of the story (ex: [Something]+JS and the relevant Node framework)</p>
+          <p>When looking at this chart, it's important to know that for instance 'Go' has a lot of false positives, due to the difficult to filter in context. In the other hand Javascript has many stories not counted because of typos in the title of the story (ex: [Something]+JS and the relevant Node framework)</p>
    
         </div>
 
@@ -119,12 +119,11 @@
       <div class="col-md-12">
         <div class="bs-component">
           
-          <p>It's interesting to see that 2015 was the year of Javascript without any doubt. In the year 2014 we could see a decline of Python and Java langs. Go-lang had gained a lot of popularity last year, maybe in the same level of Python (ignoring false positives).</p>
+          <p>It's interesting to see that 2015 was the year of Javascript without any doubt. In 2014, we witnessed a decline of Python and Java langs. Go-lang gained a lot of popularity last year, maybe at the same level of Python (ignoring false positives).</p>
 
-		  <p>Besides the quantity of readers that HN have, this is only one source of thousands of other sources of information related to programming (Twitter, GitHub, groups, other ezines, etc). So this information can't be used to select one programming language in particular. Use the correct tool for the job.</p>          
+		  <p>Aside from the quantity of HN readers, this is only one source of thousands of other sources of information related to programming (Twitter, GitHub, groups, other ezines, etc). So this information can't be used to select one programming language in particular. Use the correct tool for the job.</p>          
 
-		  <p>If you want to contribute with more analytics, feel free to fork the dataset of HN. It could be nice to see some trends about Web Frameworks, or count votes of each story, or do some sentiment analysis of each article. Another interesting thing could be use the HN Jobs information grouping by technology.
-</p>          
+		  <p>If you want to contribute with more analytics, feel free to fork HN dataset. It would be nice seeing some trends about Web Frameworks, counting votes of each story, or doing some sentiment analysis of each article. Another interesting thing would be using HN Jobs information grouping by technology.</p>          
 
 		  <p>
 		  	
@@ -174,7 +173,7 @@
 		}
 
 		function line_graph_data_callback(json){
-			load_line_chart(json);			
+			load_line_chart(json);									
 		}
 
 		function load_bar_chart(arr){		
